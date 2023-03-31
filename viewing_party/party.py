@@ -1,4 +1,6 @@
+# -----------------------------------------
 # ------------- WAVE 1 --------------------
+# -----------------------------------------
 
 def create_movie(title, genre, rating):
 	if title and genre and rating:
@@ -74,20 +76,20 @@ def get_available_recs(user_data):
 	recommendation = [movie for movie in friends_unique_watched \
 		if movie["host"] in user_data["subscriptions"]]
 
-	return recommendation or []
+	return recommendation
 
 # -----------------------------------------
 # ------------- WAVE 5 --------------------
 # -----------------------------------------
 
 def get_new_rec_by_genre(user_data):
-	most_watched = get_most_watched_genre(user_data)
+	most_watched_genre = get_most_watched_genre(user_data)
 	friends_unique_movies = get_friends_unique_watched(user_data)
 	
 	recommendation =  [movie for movie in friends_unique_movies \
-		if movie["genre"] == most_watched]
+		if movie["genre"] == most_watched_genre]
 	
-	return recommendation or []
+	return recommendation
 
 def get_rec_from_favorites(user_data):
 	user_unique_watched = get_unique_watched(user_data)
@@ -95,4 +97,4 @@ def get_rec_from_favorites(user_data):
 	recommendation = [movie for movie in user_data["favorites"] \
 		if movie in user_unique_watched]
 	
-	return recommendation or []
+	return recommendation
